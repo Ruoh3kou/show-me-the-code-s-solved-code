@@ -46,3 +46,4 @@ def saveDB(keys):
 if __name__ == '__main__':
     keys = getKeys(200)
     saveDB(keys)
+    print("It saved.")

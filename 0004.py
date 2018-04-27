@@ -1,16 +1,16 @@
 import re
+import os
 
 
-def count():
-    f = open('0004.txt')
+def count(path):
+    f = open(path)
     lines = f.readlines()
     word = []
 
     for line in lines:
-        line = line.replace(',', ' ')
-        line = line.replace('.', '')
-        list1 = line.split()
-        word += list1
+        pat = '[a-zA-Z\']+'
+        line = re.findall(pat, line)
+        word += line
 
     set1 = set(word)
     word2 = list(set1)
@@ -26,4 +26,5 @@ def count():
 
 
 if __name__ == '__main__':
-    count()
+    path = ('0004.txt')
+    count(path)

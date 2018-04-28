@@ -8,7 +8,7 @@ def addNum(img):
     color = ImageColor.colormap.get('red')
     w, h = img.size  # 原图宽、长
     draw.text((w - 50, 0), '4', font=font, fill=color)
-    img.save('0000-1.jpg')
+    img.save('0000(2).jpg')
 
 
 if __name__ == '__main__':

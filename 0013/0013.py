@@ -9,7 +9,7 @@ def spiderJPG(url):
     imglist = re.findall(pattern, html)
 
     for count, i in enumerate(imglist):
-        with open('C:\\Users\\11018\\projects\\py25\\0013\\%d.jpg' % count, 'wb') as f:
+        with open('C:\\Users\\11018\\projects\\py25\\0013\\pic\\%d.jpg' % count, 'wb') as f:
             f.write(requests.get(i).content)
     print("it's ok")
 

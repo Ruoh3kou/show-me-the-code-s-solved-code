@@ -28,8 +28,8 @@ def update():
     if (name and mail and word):
         cursor.execute('insert into message (name,mail,word,time_at) values (?, ? ,? ,?)', [name, mail, word, now])
         conn.commit()
-        return '提交成功'
-    return '不能为空'
+        return render_template('index.html', judge=1)
+    return render_template('index.html', judge=0)
 
 
 @app.route('/view', methods=['GET'])
@@ -53,9 +53,9 @@ def view():
             lis = range(1, 6)
     else:
         lis = range(1, all_p+1)
-
-    n = cursor.execute('select name,word,time_at from message where id BETWEEN ? and ?', [p*5-4, p*5])
-    mess = cursor.fetchall()
+    cursor.execute('select name,word,time_at from message where id BETWEEN ? and ?', [1, num])
+    all_list=cursor.fetchall()[::-1]
+    mess = all_list[p*5-5:p*5-1]
     return render_template('view.html', p=p, mess=mess, all_p=all_p, lis=lis)
 
 

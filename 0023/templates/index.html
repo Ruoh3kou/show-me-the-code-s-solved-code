@@ -17,4 +17,9 @@
         </div>
     </div>
 </form>
+{% if judge==1 %}
+<div class="alert alert-success">成功提交！</div>
+{% elif judge==0 %}
+<div class="alert alert-danger">提交失败！检查填写是否为空</div>
+{% endif %}
 {% endblock %}

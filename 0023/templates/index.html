@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="page-header">
+    <h1>留言簿</h1>
+</div>
+<form action="/update" method="POST">
+    <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" class="form-control" name="name">
+        <label for="mail">邮箱</label>
+        <input type="text" class="form-control" name='mail'>
+        <label for="word">留言</label>
+        <textarea type="text" class="form-control" rows="3" name='word'></textarea>
+    </div>
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="page-header">
+    <h1>查看留言</h1>
+</div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                 {% if p != 1%}
+                <a href="view?p=1">首页</a>
+                <a href="view?p={{p-1}}">上一页</a>&nbsp;{% endif %} {% for j in lis %} {% if j == p %} {{j}} {% else %}
+                <a href="view?p={{j}}">{{j}}</a>
+                {% endif %} {% endfor %} {% if p != all_p%}
+                <a href="view?p={{p+1}}">下一页</a>
+                <a href="view?p={{all_p}}">尾页</a>
+                {% endif %}
+            </h3>
+        </div>
+
+        <div class="panel-body">
+                 {% for i in mess %}
+                  姓名：{{i[0]}} <br>
+                  留言：{{i[1]}} <br>
+                  时间：{{i[2]}} <br>
+                  <br>
+                {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

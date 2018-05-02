@@ -17,7 +17,9 @@ except Exception as e:
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    cursor.execute('select title,time_at,word from tdlist')
+    lists=cursor.fetchall()[::-1]
+    return render_template('index.html',lists=lists)
 
 
 @app.route('/update', methods=['POST'])
@@ -28,13 +30,19 @@ def update():
     now = now.strftime('%Y-%m-%d %H:%M:%S')
     done=0
 
+
     if (title):
         cursor.execute('insert into tdlist (title,word,time_at,done) values (?, ? ,? ,?)', [
                        title, word,now, done])
         # conn.commit()
-        return render_template('index.html', judge=1)
-    return render_template('index.html', judge=0)
-
+        judge=1
+    else:
+        judge=0
+    
+    
+    cursor.execute('select title,time_at,word from tdlist')
+    lists = cursor.fetchall()[::-1]
+    return render_template('index.html', lists=lists, judge=judge)
 
 
 if __name__ == '__main__':

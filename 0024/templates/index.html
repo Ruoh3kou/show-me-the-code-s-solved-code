@@ -3,6 +3,7 @@
 <div class="page-header">
     <h1>ToDoList</h1>
 </div>
+
 <form action="/update" method="POST">
     <div class="form-group">
         <label for="title">任务</label>
@@ -15,9 +16,30 @@
     </div>
     </div>
 </form>
+
 {% if judge==1 %}
 <div class="alert alert-success">成功提交！</div>
 {% elif judge==0 %}
 <div class="alert alert-danger">提交失败！检查填写是否为空</div>
 {% endif %}
+
+
+    <div class="list-group">
+            <h4 class="list-group-item-heading">
+                TO DO LIST:
+            </h4>
+    {% for todo in lists %}
+        <a href="" class="list-group-item">
+            <h4 class="list-group-item-heading">
+                {{todo[0]}}
+                {{todo[1]}}
+            </h4>
+            <p class="list-group-item-text">
+                {{todo[2]}}
+            </p>
+        </a>
+{% endfor %}
+    </div>
+
+
 {% endblock %}

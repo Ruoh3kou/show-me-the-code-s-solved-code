@@ -36,9 +36,8 @@ def update():
 def view():
     cursor.execute('select count(id) from message')
     num = cursor.fetchall()
-    num = int(num[0][0])
-    #最大页数
-    all_p = num // 5 + 1
+    num = int(num[0][0])#总留言数
+    all_p = num // 5 + 1#最大页数
 
     p = int(request.args.get('p'))
 
@@ -47,7 +46,7 @@ def view():
     if(all_p >= 5):
         if(p-2 >= 1 and p+2 <= all_p):
             lis = range(p-2, p+3)
-        elif(p-2 >= 1 and p+2 > all_p):
+        elif(p+2 > all_p):
             lis = range(all_p-4, all_p+1)
         else:
             lis = range(1, 6)
